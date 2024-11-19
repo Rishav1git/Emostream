@@ -22,7 +22,7 @@ def send_emoji():
             return jsonify({"error": "Invalid data format"}), 400
 
         # Send data to Kafka topic
-        producer.send('emoji-events', value=data)
+        producer.send('processed-emoji-data', value=data)
         producer.flush(timeout=0.5)  # Flush every 500ms
 
         print(f"Emoji data sent to Kafka: {data}")
